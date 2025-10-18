@@ -21,5 +21,13 @@ test("should handle new lines as delimeters", () => {
 });
 
 test("should support custom delimeters", () => {
-    expect(add("//;\n1;2")).toBe(3);
-})
+  expect(add("//;\n1;2")).toBe(3);
+});
+
+test("should throw error if negative number found", () => {
+  try {
+    add("1,-2,3,-4");
+  } catch (error) {
+    expect(error.message).toBe("Negative numbers not allowed -2,-4");
+  }
+});

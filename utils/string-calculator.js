@@ -7,13 +7,18 @@ const add = (numberStr) => {
     delimeters = parts[0].substring(2);
     numberStr = parts[1];
   }
-  const numbers = numberStr.split(delimeters);
+  const numbers = numberStr.split(delimeters).map(Number);
+
+  // negative number check
   const negativeNums = numbers.filter((n) => n < 0);
   if (negativeNums.length > 0) {
     throw new Error(`Negative numbers not allowed ${negativeNums.join(",")}`);
   }
 
-  const sum = numbers.reduce((acc, num) => acc + parseInt(num), 0);
+  // filter and sum all the numbers
+  const sum = numbers
+    .filter((num) => num <= 1000)
+    .reduce((acc, num) => acc + parseInt(num), 0);
 
   return sum;
 };

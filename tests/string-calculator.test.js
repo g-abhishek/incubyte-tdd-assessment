@@ -7,3 +7,7 @@ test("should return 0 for empty string", () => {
 test("should return the number when only single number passed", () => {
     expect(add("1")).toBe(1)
 })
+
+test("should return sum of two comma seperated numbers", () => {
+    expect(add("1,2")).toBe(3)
+})

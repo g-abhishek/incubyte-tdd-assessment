@@ -44,3 +44,7 @@ it('supports single custom delimiter of any length', () => {
 it('supports multiple custom delimiters using //[d1][d2]\\n', () => {
   expect(add("//[*][%]\n1*2%3")).toBe(6);
 });
+
+it('supports multiple custom delimiters longer than one char', () => {
+  expect(add("//[**][%%]\n1**2%%3")).toBe(6);
+});

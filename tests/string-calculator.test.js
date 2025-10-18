@@ -40,3 +40,7 @@ test("should ignore number greater thane 1000", () => {
 it('supports single custom delimiter of any length', () => {
   expect(add("//[***]\n1***2***3")).toBe(6);
 });
+
+it('supports multiple custom delimiters using //[d1][d2]\\n', () => {
+  expect(add("//[*][%]\n1*2%3")).toBe(6);
+});

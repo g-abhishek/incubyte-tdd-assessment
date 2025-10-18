@@ -3,8 +3,12 @@ const add = (numberStr) => {
 
   let delimeters = /[\n,]/;
   if (numberStr.startsWith("//")) {
+    // create regex to split the numberStr
+    const separators = [...numberStr.matchAll(/\[([^\]]+)\]/g)].map(m => m[1]);
+    const escaped = separators.map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
     const parts = numberStr.split("\n");
-    delimeters = parts[0].substring(2);
+
+    delimeters = new RegExp(escaped.join("|"));
     numberStr = parts[1];
   }
   const numbers = numberStr.split(delimeters).map(Number);
